@@ -1,0 +1,1 @@
+<input type="text" placeholder="Search" class="p-2 input input-bordered w-full max-w" />
