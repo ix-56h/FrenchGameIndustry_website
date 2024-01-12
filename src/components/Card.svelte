@@ -1,14 +1,39 @@
+<script lang="ts">
+    import { type Company } from '../lib/company.d.ts';
+    export let company: Company;
+    
+    
+    function truncate(text: string) {
+        if (text.length > 200) {
+            text =  text.slice(0, 200) + "...";
+        }
+        return text;
+    }
+</script>
+
 <div class="card card-compact bg-base-100 shadow-lg">
     <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
     <div class="card-body">
+        <span>
+            {#if company.is_developer}
+                <div class="badge badge-primary">Studio</div>
+            {/if}
+            {#if company.is_publisher}
+                <div class="badge badge-secondary">Publisher</div>
+            {/if}
+        </span>
         <h2 class="card-title">
-            Shoes!
-            <div class="badge badge-secondary">NEW</div>
+            {company.name}
         </h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <p>
+            {#if company.description !== null}
+                {truncate(company.description)}
+            {/if}
+        </p>
         <div class="card-actions justify-end">
-            <div class="badge badge-outline">Fashion</div> 
-            <div class="badge badge-outline">Products</div>
+            {#each company.tags as tag, i}
+                <div class="badge badge-outline">{tag}</div> 
+            {/each}
         </div>
     </div>
 </div>
