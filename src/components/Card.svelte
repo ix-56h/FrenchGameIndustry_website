@@ -1,34 +1,35 @@
 <script lang="ts">
     import { type Company } from '../lib/company.d.ts';
     export let company: Company;
-    
-    
+	import { onMount } from 'svelte';
+
     function truncate(text: string) {
         if (text.length > 200) {
             text =  text.slice(0, 200) + "...";
         }
         return text;
     }
-    let logo: string = ""
-    if (company.logo !== null){
-        logo = company.logo;
-    }
 </script>
 
 <div class="card card-compact bg-base-100 shadow-lg">
-    <figure><img class="h-56 w-full object-cover" src="{logo}" alt="{company.name} logo" /></figure>
+    <figure><img class="h-56 w-full object-cover" src="{company.logo || "/public/logos/no_logo.jpg" }" alt="{company.name} logo" /></figure>
     <div class="card-body">
-        <span>
+        <div class="card-actions justify-center">
             {#if company.is_developer}
                 <div class="badge badge-primary">Studio</div>
             {/if}
             {#if company.is_publisher}
                 <div class="badge badge-secondary">Publisher</div>
             {/if}
-        </span>
-        <h2 class="card-title">
+        </div>
+        <h2 class="card-title justify-center">
             {company.name}
         </h2>
+        <div class="card-actions justify-center">
+            {#each company.platforms as platform, i}
+                <div class="badge badge-outline">{platform}</div> 
+            {/each}
+        </div>
         <p>
             {#if company.description !== null}
                 {truncate(company.description)}
