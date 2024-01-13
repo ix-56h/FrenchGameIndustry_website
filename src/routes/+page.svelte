@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Hero from '../components/Hero.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Card from '../components/Card.svelte';
@@ -22,10 +21,34 @@
 	let tagsSelected: Array<string> = [];
 	let searchText = '';
 	let loading: boolean = true;
+	
+	// For modal fiche
+	let current_company: Company;
 
+	let toTopButton: HTMLElement | null;
+
+	// When the user clicks on the button, smoothy scroll to the top of the document
+	function goToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 
 	onMount(async () => {
 		loading = true;
+
+		toTopButton = document.getElementById("to-top-button");
+
+		// When the user scrolls down 200px from the top of the document, show the button
+		window.onscroll = function () {
+			if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+				if (toTopButton !== null){
+					toTopButton.classList.remove("hidden");
+				}
+			} else {
+				if (toTopButton !== null){
+					toTopButton.classList.add("hidden");
+				}
+			}
+		}
 
 		const res = await fetch('/db.json');
 		const data = await res.json();
@@ -99,7 +122,7 @@
 			{#if loading == false}
 				{#if results.length > 0}
 					{#each results as company, i}
-						<Card company="{company}"/>
+						<Card company="{company}" bind:current_company={current_company} />
 					{/each}
 				{:else}
 					<span>No results</span>
@@ -109,6 +132,11 @@
 			{/if}
 		</div>
 	</div>
+	
+	<button id="to-top-button" on:click={goToTop} title="Go To Top" class="hidden fixed z-90 bottom-8 right-8 border-0 btn rounded-full drop-shadow-md text-3xl font-bold bg-base-200">
+		&uarr;
+	</button>
 </div>
-<Dialog/>
+
+<Dialog current_company="{current_company}"/>
 <Footer />

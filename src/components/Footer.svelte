@@ -16,7 +16,7 @@
         <a href="#">
             <Icon icon="cib:itch-io" style="font-size: 32px;"/>
         </a>
-        <a href="#">
+        <a href="https://github.com/ix-56h/FrenchGameIndustry_website">
             <Icon icon="bi:github" style="font-size: 32px;"/>
         </a>
     </nav>

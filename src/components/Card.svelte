@@ -1,8 +1,8 @@
 <script lang="ts">
     import { type Company } from '../lib/company.d.ts';
     export let company: Company;
-	import { onMount } from 'svelte';
     import Icon from '@iconify/svelte';
+    export let current_company: Company;
 
     function truncate(text: string) {
         if (text.length > 200) {
@@ -10,9 +10,12 @@
         }
         return text;
     }
+    const set_current_company = () => {
+        current_company = company
+    }
 </script>
 
-<a href="" onclick="display_info.showModal()" class="card card-compact bg-base-100 shadow-lg cursor-pointer">
+<a href="" on:click={set_current_company} onclick="display_info.showModal()" class="card card-compact bg-base-100 shadow-lg cursor-pointer">
     <figure><img class="h-56 w-full object-cover" src="{company.logo || "/logos/no_logo.jpg" }" alt="{company.name} logo" /></figure>
     <div class="card-body">
         <div class="card-actions justify-center">
@@ -66,7 +69,7 @@
                 {truncate(company.description)}
             {/if}
         </p>
-        
+
         <div class="flex">
             <div class="flex-1 card-actions justify-center">
                 <span class="w-full text-center">Platforms</span>
