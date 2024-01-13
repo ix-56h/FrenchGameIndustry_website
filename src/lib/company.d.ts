@@ -1,7 +1,7 @@
 export interface Company {
     name:          string;
     description:   null | string;
-    logo:          string;
+    logo:          null | string;
     games:         Game[];
     address:       string;
     contact:       null | string;
@@ -20,6 +20,7 @@ export interface Company {
     is_developer:  boolean;
     employees:     string;
     creation_date: null | string;
+    domain:     string;
 }
 
 export interface Game {

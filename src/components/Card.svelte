@@ -9,10 +9,14 @@
         }
         return text;
     }
+    let logo: string = ""
+    if (company.logo !== null){
+        logo = company.logo;
+    }
 </script>
 
 <div class="card card-compact bg-base-100 shadow-lg">
-    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+    <figure><img class="h-56 w-full object-cover" src="{logo}" alt="{company.name} logo" /></figure>
     <div class="card-body">
         <span>
             {#if company.is_developer}
