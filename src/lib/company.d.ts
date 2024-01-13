@@ -30,3 +30,19 @@ export interface Game {
     game_links:   string[];
     logo:         null | string;
 }
+
+export const tags: string[] = [
+    "Studio",
+    "Mobile",
+    "Publisher",
+    "VR",
+    "Web"
+]
+
+export const platforms: string[] = [
+    "PC",
+    "Mobile",
+    "Console",
+    "VR",
+    "Web"
+]

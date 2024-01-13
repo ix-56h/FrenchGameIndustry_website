@@ -7,12 +7,19 @@
 	import SearchText from '../components/SearchText.svelte';
 	import SelectForm from '../components/SelectForm.svelte';
 	import CardsSkeleton from '../components/CardsSkeleton.svelte';
-	import { type Company } from '../lib/company.d.ts';
+	import type { Company } from '../lib/company.d.ts';
+	import { tags, platforms } from '../lib/company.d.ts';
 	
 	import { onMount } from 'svelte';
   
 	let companies: Array<Company>;
-  
+
+	let studiosFilter = true;
+	let publishersFilter = false;
+	let platformsSelected = [];
+	let tagsSelected = [];
+	let searchText = '';
+
 	onMount(async () => {
 	  const res = await fetch('/public/db.json');
 	  const data = await res.json();
@@ -20,6 +27,7 @@
 	  // Update the items prop with the fetched data
 	  companies = data;
 	});
+
 </script>
 
 <svelte:head>
@@ -36,14 +44,14 @@
 <div class="lg:flex lg:flex-row">
 	<div class="basis-full lg:basis-1/6 p-4">
 		<div class="bg-base-100 p-4">
-			<SearchText />
+			<SearchText bind:searchText={searchText} />
 			<div class="flex flex-row">
-				<CheckboxForm parameter_name="Studios" />
-				<CheckboxForm parameter_name="Publishers" />
+				<CheckboxForm parameter_name="Studios" bind:isChecked={studiosFilter} />
+				<CheckboxForm parameter_name="Publishers" bind:isChecked={publishersFilter} />
 			</div>
 			<div class="flex flex-row lg:block">
-				<SelectForm filter_name="Platforms"/>
-				<SelectForm filter_name="Tags"/>
+				<SelectForm filter_name="Platforms" options="{platforms}"/>
+				<SelectForm filter_name="Tags" options="{tags}"/>
 			</div>
 		</div>
 	</div>
@@ -60,7 +68,4 @@
 		</div>
 	</div>
 </div>
-<!-- <div class="grid grid-cols-4 gap-4">
-	
-</div> -->
 <Footer />
