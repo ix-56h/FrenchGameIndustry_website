@@ -7,6 +7,7 @@
 	import SearchText from '../components/SearchText.svelte';
 	import SelectForm from '../components/SelectForm.svelte';
 	import CardsSkeleton from '../components/CardsSkeleton.svelte';
+	import Dialog from '../components/Dialog.svelte';
 	import type { Company } from '../lib/company.d.ts';
 	import { tags, platforms } from '../lib/company.d.ts';
 	
@@ -36,7 +37,6 @@
 	});
 	
 	const update_results = () => {
-		loading = true;
 		
 		results = companies
 		if (searchText != '') {
@@ -60,7 +60,6 @@
 				return tagsSelected.every(tag => company.tags.includes(tag));
 			});
 		}
-		loading = false;
 	}
 	
 	$: studiosFilter, update_results();
@@ -97,7 +96,7 @@
 	
 	<div class="w-full">
 		<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-			{#if results && loading == false}
+			{#if loading == false}
 				{#if results.length > 0}
 					{#each results as company, i}
 						<Card company="{company}"/>
@@ -111,4 +110,5 @@
 		</div>
 	</div>
 </div>
+<Dialog/>
 <Footer />
