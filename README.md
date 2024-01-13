@@ -1,7 +1,3 @@
-**README - FrenchGameIndustry**
-
----
-
 # FrenchGameIndustry
 
 Bienvenue sur FrenchGameIndustry, un projet open source visant à répertorier les studios de développement et les éditeurs de jeux vidéo en France. Ce site web gratuit est mis à jour régulièrement pour offrir une base de données complète et actuelle.
