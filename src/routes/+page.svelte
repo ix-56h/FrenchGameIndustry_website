@@ -26,7 +26,7 @@
 	onMount(async () => {
 		loading = true;
 
-		const res = await fetch('/public/db.json');
+		const res = await fetch('/db.json');
 		const data = await res.json();
 		
 		// Update the items prop with the fetched data

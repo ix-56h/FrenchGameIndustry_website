@@ -12,7 +12,7 @@
 </script>
 
 <div class="card card-compact bg-base-100 shadow-lg">
-    <figure><img class="h-56 w-full object-cover" src="{company.logo || "/public/logos/no_logo.jpg" }" alt="{company.name} logo" /></figure>
+    <figure><img class="h-56 w-full object-cover" src="{company.logo || "/logos/no_logo.jpg" }" alt="{company.name} logo" /></figure>
     <div class="card-body">
         <div class="card-actions justify-center">
             {#if company.is_developer}
