@@ -15,7 +15,7 @@
     }
 </script>
 
-<a href="" on:click={set_current_company} onclick="display_info.showModal()" class="card card-compact bg-base-100 shadow-lg cursor-pointer">
+<a href="" on:click={set_current_company} onclick="display_info.showModal()" class="card card-compact bg-base-100 shadow-lg cursor-pointer border-base-200 border">
     <figure><img class="h-56 w-full object-cover" src="{company.logo || "/logos/no_logo.jpg" }" alt="{company.name} logo" /></figure>
     <div class="card-body">
         <div class="card-actions justify-center">

@@ -99,12 +99,12 @@
 	
 <Navbar />
 	
-<div class="flex flex-col w-full border-opacity-50 pl-40 pr-40">
+<div class="flex flex-col w-full border-opacity-50 pl-40 pr-40 bg-base-200">
 	<div class="divider"></div>
 </div>
-<div class="lg:flex lg:flex-row">
+<div class="lg:flex lg:flex-row bg-base-200">
 	<div class="basis-full lg:basis-1/6 p-4">
-		<div class="bg-base-100 p-4">
+		<div class="bg-base-100 rounded-xl p-4">
 			<SearchText bind:searchText={searchText} on:input={update_results} />
 			<div class="flex flex-row">
 				<CheckboxForm parameter_name="Studios" bind:isChecked={studiosFilter} />
