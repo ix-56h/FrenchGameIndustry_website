@@ -13,7 +13,7 @@
         </form>
         {#if current_company}
         <div class="flex card card-compact w-full">
-            <figure><img class="w-fit" src="{current_company.logo || "/logos/no_logo.jpg" }" alt="{current_company.name} logo" /></figure>
+            <figure><img class="h-56" src="{current_company.logo || "/logos/no_logo.jpg" }" alt="{current_company.name} logo" /></figure>
             <div class="card-body">
                 <div class="card-actions justify-center">
                     {#if current_company.is_developer}
@@ -43,8 +43,7 @@
                 </div>
                 <div class="card-actions justify-center">
                     {#if current_company.address}
-                        <span class="badge badge-outline">
-                            <Icon icon="bi:building" style="font-size: 16px;" class="mr-1"/>
+                        <span>
                             {current_company.address}
                         </span>
                     {/if}
@@ -52,12 +51,6 @@
                         <span class="badge badge-outline">
                             <Icon icon="bi:at" style="font-size: 16px;" class="mr-1"/>
                             {current_company.email}
-                        </span>
-                    {/if}
-                    {#if current_company.contact}
-                        <span class="badge badge-outline">
-                            <Icon icon="bi:people" style="font-size: 16px;" class="mr-1"/>
-                            {current_company.contact}
                         </span>
                     {/if}
                     {#if current_company.phone}
@@ -114,7 +107,12 @@
                     <div class="flex flex-col w-full border-opacity-50 px-10">
                         <div class="divider"></div>
                     </div>
-                    <GameCard/>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+                        {#each current_company.games as game}
+                            <GameCard game={game}/>
+                        {/each}
+                    </div>
+
                 {/if}
                 <div class="flex flex-col w-full border-opacity-50 px-10">
                     <div class="divider"></div>
