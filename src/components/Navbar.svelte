@@ -1,6 +1,9 @@
-<div class="navbar bg-base-200">
+<div class="navbar bg-base-200 px-8">
     <div class="flex-1">
-        <a class="btn btn-ghost text-xl">French Game Industry</a>
+        <img src="/beret.svg" alt="French Game Industry beret" width="40em">
+        <h2 class="text-xl hidden sm:block">
+            French Game Industry
+        </h2>
     </div>
     <div class="flex-none">
         <div class="mr-4">
