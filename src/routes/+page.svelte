@@ -95,22 +95,31 @@
 <svelte:head>
 	<title>French Game Industry</title>
 	<meta name="description" content="A website to discover french game studios and publishers." />
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
 </svelte:head>
 	
 <Navbar />
 	
-<div class="flex flex-col w-full border-opacity-50 pl-40 pr-40 bg-base-200">
+<div class="flex flex-col w-full border-opacity-50 px-40 bg-base-200">
 	<div class="divider"></div>
 </div>
+
 <div class="lg:flex lg:flex-row bg-base-200">
 	<div class="basis-full lg:basis-1/6 p-4">
 		<div class="bg-base-100 rounded-xl p-4">
 			<SearchText bind:searchText={searchText} on:input={update_results} />
-			<div class="flex flex-row">
+			<div class="sm:flex sm:flex-row">
 				<CheckboxForm parameter_name="Studios" bind:isChecked={studiosFilter} />
 				<CheckboxForm parameter_name="Publishers" bind:isChecked={publishersFilter} />
 			</div>
-			<div class="flex flex-row lg:block">
+			<div class="sm:flex sm:flex-row lg:block">
 				<SelectForm filter_name="Platforms" options="{platforms}" bind:selectedOptions={platformsSelected}/>
 				<SelectForm filter_name="Tags" options="{tags}" bind:selectedOptions={tagsSelected}/>
 			</div>
@@ -118,7 +127,7 @@
 	</div>
 	
 	<div class="w-full">
-		<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-4">
 			{#if loading == false}
 				{#if results.length > 0}
 					{#each results as company, i}
@@ -133,7 +142,7 @@
 		</div>
 	</div>
 	
-	<button id="to-top-button" on:click={goToTop} title="Go To Top" class="hidden fixed z-90 bottom-8 right-8 border-0 btn rounded-full drop-shadow-md text-3xl font-bold bg-base-200">
+	<button id="to-top-button" on:click={goToTop} title="Go To Top" class="hidden fixed z-90 bottom-16 right-8 border-0 btn rounded-full drop-shadow-md text-3xl font-bold bg-base-200">
 		&uarr;
 	</button>
 </div>

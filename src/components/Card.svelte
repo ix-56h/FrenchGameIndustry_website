@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Lazy from 'svelte-lazy';
     import { type Company } from '../lib/company.d.ts';
     export let company: Company;
     import Icon from '@iconify/svelte';
@@ -15,8 +16,12 @@
     }
 </script>
 
-<a href="" on:click={set_current_company} onclick="display_info.showModal()" class="card card-compact bg-base-100 shadow-lg cursor-pointer border-base-200 border">
-    <figure><img class="h-56 w-full object-cover" src="{company.logo || "/logos/no_logo.jpg" }" alt="{company.name} logo" /></figure>
+<a on:click={set_current_company} onclick="display_info.showModal()" class="card card-compact bg-base-100 shadow-lg cursor-pointer border-base-200 border">
+    <figure>
+        <Lazy keep={true} placeholder={"/logos/no_logo.jpg"}>
+            <img class="h-56 w-full object-cover" src="{company.logo || "/logos/no_logo.jpg" }" alt="{company.name} logo" />
+        </Lazy>
+    </figure>
     <div class="card-body">
         <div class="card-actions justify-center">
             {#if company.is_developer}

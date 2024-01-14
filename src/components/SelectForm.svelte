@@ -14,7 +14,7 @@
             <option value={option}>{option}</option>
         {/each}
     </select>
-    <div class="label">
+    <div class="hidden sm:block label">
         <span class="label-text-alt">Hold <kbd class="kbd kbd-xs">Ctrl</kbd> to multiple select</span>
     </div>
 </label>
