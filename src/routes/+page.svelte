@@ -35,6 +35,14 @@
 	onMount(async () => {
 		loading = true;
 
+		const res = await fetch('/db.json');
+		const data = await res.json();
+		
+		// Update the items prop with the fetched data
+		companies = data;
+		results = companies;
+		loading = false;
+
 		toTopButton = document.getElementById("to-top-button");
 
 		// When the user scrolls down 200px from the top of the document, show the button
@@ -49,14 +57,6 @@
 				}
 			}
 		}
-
-		const res = await fetch('/db.json');
-		const data = await res.json();
-		
-		// Update the items prop with the fetched data
-		companies = data;
-		results = companies;
-		loading = false;
 	});
 	
 	const update_results = () => {
@@ -141,11 +141,11 @@
 			{/if}
 		</div>
 	</div>
-	
-	<button id="to-top-button" on:click={goToTop} title="Go To Top" class="hidden fixed z-90 bottom-16 right-8 border-0 btn rounded-full drop-shadow-md text-3xl font-bold bg-base-200">
-		&uarr;
-	</button>
 </div>
+
+<button id="to-top-button" on:click={goToTop} title="Go To Top" class="hidden fixed z-90 bottom-16 right-8 border-0 btn rounded-full drop-shadow-md text-3xl font-bold bg-base-200">
+	&uarr;
+</button>
 
 <Dialog current_company="{current_company}"/>
 <Footer />
