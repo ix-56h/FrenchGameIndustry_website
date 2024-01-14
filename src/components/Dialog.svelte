@@ -9,7 +9,7 @@
 <dialog id="display_info" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10">✕</button>
         </form>
         {#if current_company}
         <div class="flex card card-compact w-full">
