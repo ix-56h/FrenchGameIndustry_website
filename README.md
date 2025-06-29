@@ -1,3 +1,9 @@
+
+> [!WARNING]  
+> The project is currently on hold, i (zarial/ix-56h) plan to make a huge update of the whole project with better Front-end, providing backend source code and add a lot of features.
+> This will take time, but i hope i'll be able to build what i have in mind for 2026.
+> Thanks !
+
 # FrenchGameIndustry
 
 Bienvenue sur FrenchGameIndustry, un projet open source visant à répertorier les studios de développement et les éditeurs de jeux vidéo en France. Ce site web gratuit est mis à jour régulièrement pour offrir une base de données complète et actuelle.
